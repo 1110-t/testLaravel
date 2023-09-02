@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bio extends Model
+class Biodetailimage extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function biodetails(){
-        return $this->hasMany(Biodetail::class)->orderBy('date', 'asc');
-    }
-    public static function order_change(Bio $bio,$updown){
-        $target = Bio::where('order', '=', $bio->order)->first();
+    public static function order_change(Biodetailimage $bio,$updown){
+        $target = Biodetailimage::where('order', '=', $bio->order)->first();
         if($target ){
             $target->order += $updown;
             $target->save();

@@ -37,6 +37,10 @@ Route::prefix('admin')->group(function (){
     Route::prefix('bio')->group(function (){
         Route::get('/', [ManagementController::class, 'bio_top'])->name('manage.bio');
         Route::post('/edit_delete', [ManagementController::class, 'bio_edit_delete'])->name('manage.bio.edit_delete');
+        Route::post('/detail_edit_delete', [ManagementController::class, 'bio_detail_edit_delete'])->name('manage.bio.detail.edit_delete');
         Route::post('/save', [ManagementController::class, 'bio_save'])->name('manage.bio.save');
+        Route::post('/detail_save', [ManagementController::class, 'bio_detail_save'])->name('manage.biodetail.save');
+        Route::post('/detailimage_save', [ManagementController::class, 'bio_detail_image_save'])->name('manage.biodetailimage.save');
+        Route::post('/detailimage_edit_delete', [ManagementController::class, 'bio_detailimage_edit_delete'])->name('manage.bio.detailimage.edit_delete');
     });
 })->middleware("auth");

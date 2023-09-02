@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('biodetails', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedBigInteger('bio_id');
-            $table->date('date');
-            $table->text('title');
-            $table->boolean('date_display');
+        Schema::create('biodetailimages', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('biodetail_id');
+            $table->string('path');
+            $table->integer('order');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('biodetails');
+        Schema::dropIfExists('biodetailimages');
     }
 };
