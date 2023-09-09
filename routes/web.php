@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::prefix('admin')->group(function (){
-    Route::get('/', [ManagementController::class, 'top'])->name('manage.top');
+    Route::get('/admin', [ManagementController::class, 'top'])->name('manage.top');
     Route::prefix('bio')->group(function (){
         Route::get('/', [ManagementController::class, 'bio_top'])->name('manage.bio');
         Route::post('/edit_delete', [ManagementController::class, 'bio_edit_delete'])->name('manage.bio.edit_delete');
@@ -44,3 +45,5 @@ Route::prefix('admin')->group(function (){
         Route::post('/detailimage_edit_delete', [ManagementController::class, 'bio_detailimage_edit_delete'])->name('manage.bio.detailimage.edit_delete');
     });
 })->middleware("auth");
+
+Route::get('/', [ClientController::class, 'index'])->name('index');
